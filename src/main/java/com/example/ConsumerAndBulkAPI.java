@@ -51,7 +51,6 @@ public class ConsumerAndBulkAPI {
         consumer.subscribe(Arrays.asList(topic));
 
         try {
-            String csvStr = "";
             while (true) {
                 ConsumerRecords<String, SalesforceAccount> records = consumer.poll(10000);
                 String bulkJson = "[";

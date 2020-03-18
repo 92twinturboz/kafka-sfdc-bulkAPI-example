@@ -1,0 +1,5 @@
+## Overview
+This repository contains an examples of ways to tune a Kafka Consumer batch records in a way that is compatible with the Salesforce BulkAPI. There are currently two Java classes you can reference in your own application. The first is the `SalesforceAccount` class that contains the data model for the `SalesforceAccount` object (using the Confluent `KafkaJsonDeserializer`). The `ConsumerAndBulkAPI` class contains the main method that invokes consumer, and creates/completes the batch request with the Salesforce Bulk API. There are several knobs you can use to adjust how long you wait between batches, as well as the minimum batch size you will accept before the time limit is reached:
+
+* `FETCH_MIN_BYTES_CONFIG` is the minimuim size in bytes that a consumer will fetch at any given time.
+* `FETCH_MAX_WAIT_MS_CONFIG` is the maximum amount of time in milliseconds that the consumer will wait between fetches. This allows for messages to be consumed and batched up to the Salesforce API when there is low throughput on the topic, where `FETCH_MIN_BYTES_CONFIG` may not be satisfied for some time.
