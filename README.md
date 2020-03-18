@@ -3,3 +3,4 @@ This repository contains an examples of ways to tune a Kafka Consumer batch reco
 
 * `FETCH_MIN_BYTES_CONFIG` is the minimuim size in bytes that a consumer will fetch at any given time.
 * `FETCH_MAX_WAIT_MS_CONFIG` is the maximum amount of time in milliseconds that the consumer will wait between fetches. This allows for messages to be consumed and batched up to the Salesforce API when there is low throughput on the topic, where `FETCH_MIN_BYTES_CONFIG` may not be satisfied for some time.
+* `poll.ms` specified in the `poll()` method can be adjusted to determine how frequently you would like to check the topic for new messages. For large batch type operations like what we are doing here, `poll.ms` values in the order of minutes is probably ideal.
